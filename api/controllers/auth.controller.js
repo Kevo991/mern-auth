@@ -57,13 +57,14 @@ res.cookie('access_token', token, { httpOnly: true,
     .status(200)
     .json(rest);
 } else {    
-const generatedPassword = 
+
+ const generatedPassword = 
 Math.random().toString(36).slice(-8)
 + Math.random().toString(36).slice(-8);
 const hashedPassword = bcryptjs.hashSync
 (generatedPassword, 10); 
 const newUser = new User ({ 
-    username: req.body.name.split("")
+username: req.body.name.split("")
 .join("").toLowerCase() +
  Math.random().toString(36).slice(-8),
  email: req.body.email,
