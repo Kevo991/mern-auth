@@ -78,7 +78,7 @@ const handleSubmit = async (e) => {
     if (data.success === false) {
       dispatch(updateUserFailure(data));
       return;
-    }
+    } 
     dispatch(updateUserSuccess(data));
     setUpdateSuccess(true);
   } catch (error) {
@@ -187,7 +187,8 @@ const handleDeleteAccount = async () => {
       <span className="text-red-700 cursor-pointer">
         Sign out</span>
     </div>
-    <p className="text-red-700 mt-5">{error && "Something went wrong! "}
+    <p className="text-red-700 mt-5">
+       {error && "Something went wrong! "}
       
     </p>
     <p className="text-green-700 mt-5">
