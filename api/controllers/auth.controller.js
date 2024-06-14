@@ -86,7 +86,7 @@ res
  .json(rest); 
 }
     } catch (error) {
-next(error)
+next(error);
     }
 };
 
