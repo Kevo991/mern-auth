@@ -30,36 +30,36 @@ const Profile = () => {
   const [formData, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const { currentUser, loading, error } = useSelector((state => state.user));
- useEffect(() => {
-  if (image) {
+ 
+  useEffect(() => {
+  if (image) { 
     handleFileUpload(image);
   }
  }, [image]);
 
-const handleFileUpload = async (image) => {
+const handleFileUpload = async (image) => { 
   const storage = getStorage(app);
   const fileName = new Date().getTime() + image.name; 
   const storageRef = ref(storage, fileName);
   const uploadTask = uploadBytesResumable(storageRef, image);
-
-  uploadTask.on(
-    'state_changed',
+                                      
+  uploadTask.on( 'state_changed',
     (snapshot) => {
     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;           
        setImagePercent(Math.round(progress));    
     },
-  );
+  
   (error)=>{
     setImageError(true)
   },
   ()=> {  
     getDownloadURL(uploadTask.snapshot.ref).then
- ((downloadURL) =>
+ ((downloadURL) => 
    setFormData({ ...formData, profilePicture: 
-    downloadURL })
- );
+    downloadURL }));
   }
-  };
+);
+};
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
@@ -119,10 +119,10 @@ try {
       Profile</h1> 
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <input 
-      type="file" 
+      type='file' 
       ref={fileRef} 
       hidden 
-      accept="image/*"
+      accept='image/*'
       onChange={(e) => setImage(e.target.files[0])} 
       />
       
